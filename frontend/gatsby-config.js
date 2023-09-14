@@ -14,9 +14,6 @@ module.exports = {
       resolve: `gatsby-source-strapi`,
       options: strapiConfig,
     },
-    "gatsby-plugin-image",
-    "gatsby-plugin-sharp",
     "gatsby-transformer-remark",
-    "gatsby-transformer-sharp",
   ],
 };
