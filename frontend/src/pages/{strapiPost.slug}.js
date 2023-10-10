@@ -1,18 +1,17 @@
 import * as React from 'react'
 import { Link, graphql } from 'gatsby'
+import Layout from '../components/layout'
 
 const BlogPost = ({ data }) => {
     return (
-        <>
-            <h1><Link to="/">Strapi Gatsby Blog Site</Link></h1>
-            <h2>{data.strapiPost.title}</h2>
-            <img src={`${data.strapiPost.cover}`} alt={`Cover for ${data.strapiPost.title}`} />
-            <p>{data.strapiPost.date}</p>
-            <img src={`${data.strapiPost.author.avatar}`} alt={`Avatar for${data.strapiPost.author.name}`} />
-            <p>Written by {data.strapiPost.author.name}</p>
-            <p><Link to={`/${data.strapiPost.category.slug}`}>Category: {data.strapiPost.category.name}</Link></p>
-            <div dangerouslySetInnerHTML={{ __html: data.strapiPost.content.data.childMarkdownRemark.html }} />
-        </>
+            <Layout pageTitle={data.strapiPost.title}>
+            <img class="postcover" src={data.strapiPost.cover} alt={`Cover for ${data.strapiPost.title}`} />
+            <p class="postdate">{data.strapiPost.date}</p>
+            <img class="postavatar" src={data.strapiPost.author.avatar} alt={`Avatar for${data.strapiPost.author.name}`} />
+            <p class="postauthor">Written by {data.strapiPost.author.name}</p>
+            <p class="postcategory"><Link to={`/${data.strapiPost.category.slug}`}>Category: {data.strapiPost.category.name}</Link></p>
+            <div class="postcontent" dangerouslySetInnerHTML={{ __html: data.strapiPost.content.data.childMarkdownRemark.html }} />
+            </Layout>
     )
 }
 
